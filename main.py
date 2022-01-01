@@ -62,12 +62,12 @@ canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=6)
 
 #logo
-logo = Image.open('./assets/logo.png')
-logo = resize_image(logo, 200, 200)
+logo = Image.open('./assets/logoTransp.png')
+logo = resize_image(logo, 400, 400)
 logo = ImageTk.PhotoImage(logo)
 logo_label = tk.Label(image=logo)
 logo_label.image = logo
-logo_label.grid(column=1, row=0)
+logo_label.grid(columnspan=3, column=0, row=0)
 
 #instructions
 instructions = tk.Label(root, text="Actual work 0.0%", font="Raleway")
@@ -79,7 +79,7 @@ systemTime = time.strftime("%H:%M:%S")
 timeDisplay_text = tk.StringVar()
 timeDisplay_text.set(systemTime)
 timeDisplay = tk.Label(root, textvariable=timeDisplay_text, font=("Arial Black", 50))
-timeDisplay.grid(columnspan=2, column=1, row=3)
+timeDisplay.grid(columnspan=3, column=0, row=3)
 
 start_btn_text = tk.StringVar()
 # start_btn = tk.Button(root, textvariable=start_btn_text, command=lambda:start_timer(), font="Raleway", bg="green", fg="white", height=2, width=15)
