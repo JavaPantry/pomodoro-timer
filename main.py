@@ -5,56 +5,61 @@ import time
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 from utils.functions import resize_image, convertSec, calcPercentage
-timerOn = True
 
-total_app_working_time = 0
+timerOn = False
 
-total_working_time = 0
-working_time = 0
-start_app_working_time = time.time()
-startTimerTime = time.time()
+appWorkingTimeTotal = 0
+appWorkingTimeStart = time.time()
 
+workingTimerStart           = time.time()
+workingTimerTicks           = 0
+workingTimerTotal           = 0
+workingTimerTotalRuntime    = 0
 
 def updateTimeDisplay():
-    global timerOn, startTimerTime, total_working_time, total_app_working_time, start_app_working_time, working_time
+    global timerOn, appWorkingTimeTotal, appWorkingTimeStart, workingTimerTicks, workingTimerStart, workingTimerTotal, workingTimerTotalRuntime
 
-    timeDisplay_text.set(time.strftime("%H:%M:%S"))
+    currentTimeTicks    = time.time()
+    appWorkingTimeTotal = currentTimeTicks - appWorkingTimeStart
+    workingTimerTicks   = currentTimeTicks - workingTimerStart
+    workingTimerTotalRuntime   = workingTimerTotal + workingTimerTicks
 
-    time_current = time.time()
-    total_app_working_time = time_current - start_app_working_time
-    total_app_work_timer_text.set(convertSec(total_app_working_time))
-
-    time_elapsed = time_current - startTimerTime
-    print("time_elapsed:"+str(time_elapsed)+" = time_current:"+str(time_current)+" - startTimerTime:"+str(startTimerTime))
-    total_working_time = working_time + time_elapsed
-    print("working_time:"+str(working_time)+" = total_working_time:"+str(total_working_time)+" + time_elapsed:"+str(time_elapsed))
-    print(total_working_time, working_time, calcPercentage(total_working_time, working_time))
-    print("------------------------------------------------------------------------------------------------------------")
-    instructions.config(text="Actual work time: " + calcPercentage(total_working_time/1000., working_time/1000.) + "%")
+    timeDisplay_text.set(time.strftime("%H:%M:%S")) 
+    total_app_work_timer_text.set(convertSec(appWorkingTimeTotal))
+    instructions.config(text="Actual work time: " + calcPercentage(appWorkingTimeTotal/1000., (workingTimerTotalRuntime)/1000.) + "%")
 
     if(timerOn == True):
-        timer_text.set(convertSec(time_elapsed))
-        total_work_timer_text.set(convertSec(total_working_time))
+        timer_text.set(convertSec(workingTimerTicks))
+        total_work_timer_text.set(convertSec(workingTimerTotalRuntime))
+
+    print(appWorkingTimeTotal, workingTimerTotalRuntime, calcPercentage(appWorkingTimeTotal, workingTimerTotalRuntime))
         
     root.after(1000, updateTimeDisplay)
 
 
 def start_timer():
-    global timerOn, startTimerTime, total_working_time, working_time
+    global timerOn, workingTimerStart, workingTimerTotal, workingTimerTotalRuntime
+    
+    # On STOP, reset the timer
     if(timerOn == True):
         timerOn = False
         # start_btn_text.set("Start")
         start_btn.config(text="Start")
         start_btn.config(bg="green")
-        startTimerTime = 0
-        timer_text.set(convertSec(startTimerTime))
-        # total_working_time = working_time
+        # don't stop workingTimerStart = 0
+        workingTimerTotal = workingTimerTotalRuntime
+
+    # On START, start the timer
     else:
         timerOn = True
         #start_btn_text.set("Stop")
         start_btn.config(text="Stop")
         start_btn.config(bg="red")
-        startTimerTime = time.time();
+        workingTimerStart = time.time();
+
+# *************************************************************
+# ********         START UI          **************************
+# *************************************************************
 
 root = tk.Tk()
 
@@ -108,11 +113,8 @@ total_app_work_timerDisplay = tk.Label(root, textvariable=total_app_work_timer_t
 total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 
 
-
-
 canvas = tk.Canvas(root, width=600, height=250)
 canvas.grid(columnspan=3)
 
-timerOn = False
 updateTimeDisplay()
 root.mainloop()
