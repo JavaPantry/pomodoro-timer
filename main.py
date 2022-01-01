@@ -4,7 +4,7 @@ import PyPDF2
 import time
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
-from functions import resize_image, convertSec, calcPercentage
+from utils.functions import resize_image, convertSec, calcPercentage
 timerOn = True
 
 total_app_working_time = 0

@@ -1,4 +1,12 @@
-from functions import calcPercentage
+# from utils.functions import calcPercentage
+
+def calcPercentage(total, part):
+    percent = 0.0
+    if(total != 0 ):
+        percent = (part * 100.0) / total
+    # percent = 100 - percent
+    return "{:10.2f}".format(percent)
+
 
 print("Hello Percentage")
 print("calcPercentage(100, 10)" + calcPercentage(100., 10.) + "%")
