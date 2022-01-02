@@ -7,6 +7,12 @@ from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 from utils.functions import resize_image, convertSec, calcPercentage
 
+MAIN_DISPLAY_FONT = ("Arial Black", 60)
+DISPLAY_FONT = ("Arial Black", 30)
+LABEL_FONT = ("Helvetica", 16)
+LABEL_FONT_BOLD = ("Helvetica", 16, "bold")
+BUTTON_FONT = ("Areal Black", 16)
+
 timerOn = False
 
 appWorkingTimeTotal = 0
@@ -97,29 +103,28 @@ rootCanvas.pack(expand=1, fill="both")
 # ********         mainTab          **************************
 # *************************************************************
 
-
-actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font="Raleway")
+actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font=LABEL_FONT_BOLD)
 actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
 
-timeDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 50))
+timeDisplay = tk.Label(mainTab, text=convertSec(0), font=MAIN_DISPLAY_FONT)
 timeDisplay.grid(columnspan=3, column=0, row=3)
 
-start_btn = tk.Button(mainTab, text="Start", command=lambda:start_timer(), font="Raleway", bg="green", fg="white", height=2, width=15)
+start_btn = tk.Button(mainTab, text="Start", command=lambda:start_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=15)
 start_btn.grid(column=0, row=4)
 
-timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
+timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
 timerDisplay.grid(columnspan=2, column=1, row=4)
 
-total_work_timer_label = tk.Label(mainTab, text="total work time", font="Raleway")
+total_work_timer_label = tk.Label(mainTab, text="Total work time", font=LABEL_FONT)
 total_work_timer_label.grid(column=0, row=5)
 
-total_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
+total_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
 total_work_timerDisplay.grid(columnspan=2, column=1, row=5)
 
-total_app_work_timer_label = tk.Label(mainTab, text="total app worktime", font="Raleway")
+total_app_work_timer_label = tk.Label(mainTab, text="Total app worktime", font=LABEL_FONT)
 total_app_work_timer_label.grid(column=0, row=6)
 
-total_app_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
+total_app_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
 total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 
 # *************************************************************
