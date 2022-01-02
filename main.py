@@ -22,7 +22,10 @@ def updateTimeDisplay():
     currentTimeTicks    = time.time()
     appWorkingTimeTotal = currentTimeTicks - appWorkingTimeStart
     workingTimerTicks   = currentTimeTicks - workingTimerStart
-    workingTimerTotalRuntime   = workingTimerTotal + workingTimerTicks
+    if(timerOn == True):
+        workingTimerTotalRuntime   = workingTimerTotal +  workingTimerTicks
+    else:
+        workingTimerTotalRuntime   = workingTimerTotal
 
     timeDisplay_text.set(time.strftime("%H:%M:%S")) 
     total_app_work_timer_text.set(convertSec(appWorkingTimeTotal))
@@ -32,8 +35,6 @@ def updateTimeDisplay():
         timer_text.set(convertSec(workingTimerTicks))
         total_work_timer_text.set(convertSec(workingTimerTotalRuntime))
 
-    print(appWorkingTimeTotal, workingTimerTotalRuntime, calcPercentage(appWorkingTimeTotal, workingTimerTotalRuntime))
-        
     root.after(1000, updateTimeDisplay)
 
 
