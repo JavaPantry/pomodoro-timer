@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 from utils.functions import resize_image, convertSec, calcPercentage
 from views.constants import *
-
+from views.configTab import *
 timerOn = False
 
 appWorkingTimeTotal = 0
@@ -125,15 +125,7 @@ total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 # *************************************************************
 # ********         ConfigTab          **************************
 # *************************************************************
-
-dummyConfigLabel1 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
-dummyConfigLabel1.grid(columnspan=3, column=0, row=3)
-dummyConfigLabel2 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
-dummyConfigLabel2.grid(columnspan=3, column=0, row=4)
-dummyConfigLabel3 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
-dummyConfigLabel3.grid(columnspan=3, column=0, row=5)
-dummyConfigLabel4 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
-dummyConfigLabel4.grid(columnspan=3, column=0, row=6)
+createView(configTab)
 
 updateTimeDisplay()
 root.mainloop()
