@@ -57,26 +57,6 @@ def display_images(img):
     img_label.grid(row=4, column=2, rowspan=2)
     return img_label
 
-#Detect Images inside the PDF document
-#Thank you sylvain of Stackoverflow
-#https://stackoverflow.com/questions/2693820/extract-images-from-pdf-without-resampling-in-python
-def extract_images(page):
-    images = []
-    if '/XObject' in page['/Resources']:
-        xObject = page['/Resources']['/XObject'].getObject()
-
-        for obj in xObject:
-            if xObject[obj]['/Subtype'] == '/Image':
-                size = (xObject[obj]['/Width'], xObject[obj]['/Height'])
-                data = xObject[obj].getData()
-                mode = ""
-                if xObject[obj]['/ColorSpace'] == '/DeviceRGB':
-                    mode = "RGB"
-                else:
-                    mode = "CMYK"
-                img = Image.frombytes(mode, size, data)
-                images.append(img)
-    return images
 
 #SAVE IMAGE MENUE
 #button functionality
