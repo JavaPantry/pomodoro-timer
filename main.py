@@ -9,6 +9,7 @@ from tkinter.filedialog import askopenfile
 from utils.functions import resize_image, convertSec, calcPercentage
 from views.constants import *
 from views.configTab import *
+
 timerOn = False
 
 appWorkingTimeTotal = 0
@@ -61,10 +62,7 @@ def start_timer():
         workingTimerStart = time.time();
 
 def configUpdated(evt):
-    print("in main.py: config updated event ", evt)
-    print("in main.py: configData = ",configData["workPeriod"], configData["breakPeriod"])
-    # evt.data cause AttributeError: 'Event' object has no attribute 'data'
-    # print("in main.py: evt.data ", evt.data)
+    print("in main.py: config updated event received configData = ",configPane.configData["workPeriod"], configPane.configData["breakPeriod"])
 
 # *************************************************************
 # ********         START UI          **************************
@@ -130,11 +128,9 @@ total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 # *************************************************************
 # ********         ConfigTab          **************************
 # *************************************************************
-createConfigView(configTab)
+configPane = ConfigTab(configTab)
 
 updateTimeDisplay()
 
-#TODO: add config update listener
 root.bind("<<ConfigUpdated>>", configUpdated)
-
 root.mainloop()
