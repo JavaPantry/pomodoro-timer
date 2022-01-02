@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter.constants import E
 from typing import Any
 import PyPDF2
 import time
@@ -128,4 +129,12 @@ total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 createConfigView(configTab)
 
 updateTimeDisplay()
+
+def configUpdated(evt):
+    print("config updated", evt)
+    # print("Config updated:", e)
+    # print("workPeriodEntry", workPeriodEntry.get())
+    # print("breakPeriodEntry", breakPeriodEntry.get())
+    
+root.bind("<Button>", lambda e: configUpdated(e))
 root.mainloop()

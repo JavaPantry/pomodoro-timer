@@ -2,8 +2,10 @@ import tkinter as tk
 from .constants import *
 
 
-workPeriodEntry = None
-breakPeriodEntry = None
+workPeriodEntry:tk.Entry = None
+breakPeriodEntry:tk.Entry = None
+saveBtn = None
+
 
 def saveConfig():
     print("Save config")
@@ -16,7 +18,7 @@ def saveConfig():
 # configTab.grid(columnspan=3, column=0, row=0)
 
 def createConfigView(configTab): # = tk.Frame(root, bg=BG_COLOR)
-    global workPeriodEntry, breakPeriodEntry
+    global workPeriodEntry, breakPeriodEntry, saveBtn
     dummyConfigLabel1 = tk.Label(configTab, text="Work Period (in minutes)", font=LABEL_FONT)
     dummyConfigLabel1.grid(columnspan=2, column=0, row=0)
     workPeriodEntry = tk.Entry(configTab, width=10) # , font=DISPLAY_FONT , font=ENTRY_FONT
