@@ -60,6 +60,12 @@ def start_timer():
         start_btn.config(bg="red")
         workingTimerStart = time.time();
 
+def configUpdated(evt):
+    print("in main.py: config updated event ", evt)
+    print("in main.py: configData = ",configData["workPeriod"], configData["breakPeriod"])
+    # evt.data cause AttributeError: 'Event' object has no attribute 'data'
+    # print("in main.py: evt.data ", evt.data)
+
 # *************************************************************
 # ********         START UI          **************************
 # *************************************************************
@@ -90,10 +96,7 @@ tabs.add(configTab, text="Config")
 configCanvas = tk.Canvas(configTab) # , width=600, height=300
 configCanvas.grid(columnspan=3, rowspan=6)
 
-
-# tabs.pack(expand=1, fill="both")
 rootCanvas.pack(expand=1, fill="both")
-
 
 # *************************************************************
 # ********         mainTab          **************************
@@ -129,10 +132,6 @@ total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 createConfigView(configTab)
 
 updateTimeDisplay()
-
-def configUpdated(evt):
-    print("in main.py: config updated event ", evt)
-    print("in main.py: configData = ",configData["workPeriod"], configData["breakPeriod"])
 
 #TODO: add config update listener
 root.bind("<<ConfigUpdated>>", configUpdated)

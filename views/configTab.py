@@ -21,6 +21,9 @@ def saveConfig():
     # by binding root to this custom Event root.bind("<<ConfigUpdated>>", configUpdated)
     # https://stackoverflow.com/questions/36237551/custom-events-in-tkinter
     # https://python.hotexamples.com/examples/Tkinter/Tk/event_generate/python-tk-event_generate-method-examples.html
+    
+    # attempt to use 'evt.data' will cause AttributeError: 'Event' object has no attribute 'data'
+    # saveBtn.event_generate("<<ConfigUpdated>>", when="tail", data="suppose to be configData")
     saveBtn.event_generate("<<ConfigUpdated>>", when="tail")
         
 
