@@ -72,6 +72,7 @@ def configUpdated(evt):
 
 root = tk.Tk()
 root.title("Time Tracker")
+root.iconbitmap('./assets/logoTransp4icon24.ico')
 # root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='asset/logoTransp.png'))
 rootCanvas = tk.Canvas(root, width=600, height=300)
 rootCanvas.grid(columnspan=1, rowspan=2)
