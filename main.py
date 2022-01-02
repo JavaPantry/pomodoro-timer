@@ -98,8 +98,5 @@ total_app_work_timer_label.grid(column=0, row=6)
 total_app_work_timerDisplay = tk.Label(root, text=convertSec(0), font=("Arial Black", 40))
 total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 
-canvas = tk.Canvas(root, width=600, height=250)
-canvas.grid(columnspan=3)
-
 updateTimeDisplay()
 root.mainloop()
