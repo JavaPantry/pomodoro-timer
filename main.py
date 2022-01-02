@@ -125,7 +125,7 @@ total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 # *************************************************************
 # ********         ConfigTab          **************************
 # *************************************************************
-createView(configTab)
+createConfigView(configTab)
 
 updateTimeDisplay()
 root.mainloop()
