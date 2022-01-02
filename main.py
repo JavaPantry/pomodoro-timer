@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from typing import Any
 import PyPDF2
 import time
@@ -64,39 +65,71 @@ def start_timer():
 root = tk.Tk()
 root.title("Time Tracker")
 # root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='asset/logoTransp.png'))
-canvas = tk.Canvas(root, width=600, height=300)
-canvas.grid(columnspan=3, rowspan=6)
+
+
+tabs = ttk.Notebook(root)
+mainTab     = ttk.Frame(tabs)
+configTab   = ttk.Frame(tabs)
+
+tabs.add(mainTab, text="Main")
+mainCanvas = tk.Canvas(mainTab, width=600, height=300)
+mainCanvas.grid(columnspan=3, rowspan=6)
+
+tabs.add(configTab, text="Config")
+configCanvas = tk.Canvas(configTab, width=600, height=300)
+configCanvas.grid(columnspan=3, rowspan=6)
+
+
+tabs.pack(expand=1, fill="both")
+
+
+# *************************************************************
+# ********         mainTab          **************************
+# *************************************************************
 
 logo = Image.open('./assets/logoTransp.png')
 logo = resize_image(logo, 400, 400)
 logo = ImageTk.PhotoImage(logo)
-logo_label = tk.Label(image=logo)
+logo_label = tk.Label(mainTab, image=logo)
 logo_label.image = logo
 logo_label.grid(columnspan=3, column=0, row=0)
 
-actualWorkPercentageDisplay = tk.Label(root, text="Actual work 0.0%", font="Raleway")
+actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font="Raleway")
 actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
 
-timeDisplay = tk.Label(root, text=convertSec(0), font=("Arial Black", 50))
+timeDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 50))
 timeDisplay.grid(columnspan=3, column=0, row=3)
 
-start_btn = tk.Button(root, text="Start", command=lambda:start_timer(), font="Raleway", bg="green", fg="white", height=2, width=15)
+start_btn = tk.Button(mainTab, text="Start", command=lambda:start_timer(), font="Raleway", bg="green", fg="white", height=2, width=15)
 start_btn.grid(column=0, row=4)
 
-timerDisplay = tk.Label(root, text=convertSec(0), font=("Arial Black", 40))
+timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
 timerDisplay.grid(columnspan=2, column=1, row=4)
 
-total_work_timer_label = tk.Label(root, text="total work time", font="Raleway")
+total_work_timer_label = tk.Label(mainTab, text="total work time", font="Raleway")
 total_work_timer_label.grid(column=0, row=5)
 
-total_work_timerDisplay = tk.Label(root, text=convertSec(0), font=("Arial Black", 40))
+total_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
 total_work_timerDisplay.grid(columnspan=2, column=1, row=5)
 
-total_app_work_timer_label = tk.Label(root, text="total app worktime", font="Raleway")
+total_app_work_timer_label = tk.Label(mainTab, text="total app worktime", font="Raleway")
 total_app_work_timer_label.grid(column=0, row=6)
 
-total_app_work_timerDisplay = tk.Label(root, text=convertSec(0), font=("Arial Black", 40))
+total_app_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=("Arial Black", 40))
 total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
+
+# *************************************************************
+# ********         ConfigTab          **************************
+# *************************************************************
+
+dummyConfigLabel1 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
+dummyConfigLabel1.grid(columnspan=3, column=0, row=3)
+dummyConfigLabel2 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
+dummyConfigLabel2.grid(columnspan=3, column=0, row=4)
+dummyConfigLabel3 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
+dummyConfigLabel3.grid(columnspan=3, column=0, row=5)
+dummyConfigLabel4 = tk.Label(configTab, text="Dummy Config", font=("Arial Black", 50))
+dummyConfigLabel4.grid(columnspan=3, column=0, row=6)
 
 updateTimeDisplay()
 root.mainloop()
