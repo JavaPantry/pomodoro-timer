@@ -131,10 +131,10 @@ createConfigView(configTab)
 updateTimeDisplay()
 
 def configUpdated(evt):
-    print("config updated", evt)
-    # print("Config updated:", e)
-    # print("workPeriodEntry", workPeriodEntry.get())
-    # print("breakPeriodEntry", breakPeriodEntry.get())
-    
-root.bind("<Button>", lambda e: configUpdated(e))
+    print("in main.py: config updated event ", evt)
+    print("in main.py: configData = ",configData["workPeriod"], configData["breakPeriod"])
+
+#TODO: add config update listener
+root.bind("<<ConfigUpdated>>", configUpdated)
+
 root.mainloop()
