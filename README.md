@@ -17,7 +17,10 @@ python study project pomodoro toolset
   - `"{0:02}:{1:02}:{2:02}".format(int(hours),int(mins),int(sec))` => 01:59:11
   - `print(str(1).zfill(2))` => 01
   - `val=1 print(f'{val:02}')`  => 01
+- [Set Window Icon in Tkinter](https://www.delftstack.com/howto/python-tkinter/how-to-set-window-icon-in-tkinter/)
+
 
 ### View commit history in GitHub web UI
   - On GitHub, you can see the commit history of a repository by:
     - Navigating directly to the commits page of a repository (add `/commits/master` or `/commits/main` or `/commits` to repository url)
+

@@ -62,7 +62,8 @@ def start_timer():
 # *************************************************************
 
 root = tk.Tk()
-
+root.title("Time Tracker")
+# root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='asset/logoTransp.png'))
 canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=6)
 
