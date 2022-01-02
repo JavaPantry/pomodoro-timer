@@ -6,12 +6,7 @@ import time
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 from utils.functions import resize_image, convertSec, calcPercentage
-
-MAIN_DISPLAY_FONT = ("Arial Black", 60)
-DISPLAY_FONT = ("Arial Black", 30)
-LABEL_FONT = ("Helvetica", 16)
-LABEL_FONT_BOLD = ("Helvetica", 16, "bold")
-BUTTON_FONT = ("Areal Black", 16)
+from views.constants import *
 
 timerOn = False
 
