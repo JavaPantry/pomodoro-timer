@@ -65,34 +65,38 @@ def start_timer():
 root = tk.Tk()
 root.title("Time Tracker")
 # root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='asset/logoTransp.png'))
+rootCanvas = tk.Canvas(root, width=600, height=300)
+rootCanvas.grid(columnspan=1, rowspan=2)
+logo = Image.open('./assets/logoTransp.png')
+logo = resize_image(logo, 400, 400)
+logo = ImageTk.PhotoImage(logo)
+logo_label = tk.Label(rootCanvas, image=logo)
+logo_label.image = logo
+logo_label.grid(column=0, row=0)
 
 
-tabs = ttk.Notebook(root)
+tabs = ttk.Notebook(rootCanvas)
+tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
 mainTab     = ttk.Frame(tabs)
 configTab   = ttk.Frame(tabs)
 
 tabs.add(mainTab, text="Main")
-mainCanvas = tk.Canvas(mainTab, width=600, height=300)
+mainCanvas = tk.Canvas(mainTab) # , width=600, height=300
 mainCanvas.grid(columnspan=3, rowspan=6)
 
 tabs.add(configTab, text="Config")
-configCanvas = tk.Canvas(configTab, width=600, height=300)
+configCanvas = tk.Canvas(configTab) # , width=600, height=300
 configCanvas.grid(columnspan=3, rowspan=6)
 
 
-tabs.pack(expand=1, fill="both")
+# tabs.pack(expand=1, fill="both")
+rootCanvas.pack(expand=1, fill="both")
 
 
 # *************************************************************
 # ********         mainTab          **************************
 # *************************************************************
 
-logo = Image.open('./assets/logoTransp.png')
-logo = resize_image(logo, 400, 400)
-logo = ImageTk.PhotoImage(logo)
-logo_label = tk.Label(mainTab, image=logo)
-logo_label.image = logo
-logo_label.grid(columnspan=3, column=0, row=0)
 
 actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font="Raleway")
 actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
