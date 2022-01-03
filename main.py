@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-from PIL import Image, ImageTk
-from utils.functions import resize_image
 from views.calcFunctions import *
 from views.constants import *
 from views.configTab import *
 from views.mainTab import *
+from views.logo import *
 
 
 def configUpdated(evt):
@@ -18,16 +17,10 @@ def configUpdated(evt):
 root = tk.Tk()
 root.title("Time Tracker")
 root.iconbitmap('./assets/logoTransp4icon24.ico')
-# root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='asset/logoTransp.png'))
 rootCanvas = tk.Canvas(root, width=600, height=300)
 rootCanvas.grid(columnspan=1, rowspan=2)
-logo = Image.open('./assets/logoTransp.png')
-logo = resize_image(logo, 400, 400)
-logo = ImageTk.PhotoImage(logo)
-logo_label = tk.Label(rootCanvas, image=logo)
-logo_label.image = logo
-logo_label.grid(column=0, row=0)
 
+logo = Logo( rootCanvas)
 
 tabs = ttk.Notebook(rootCanvas)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
