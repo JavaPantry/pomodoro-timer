@@ -1,13 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
 
-def calcPercentage(total, part):
-    percent = 0.0
-    if(total != 0 ):
-        percent = (part * 100.0) / total
-    # percent = 100 - percent
-    return "{:10.2f}".format(percent)
-
 
 #place an image on the grid
 def display_logo(url, row, column):
@@ -78,10 +71,3 @@ def save_image(img):
         img = img.convert("RGB")
     img.save("img.png", format="png")
 
-def convertSec(sec):
-    mins = sec // 60
-    sec = sec % 60
-    hours = mins // 60
-    mins = mins % 60
-    # return str(hours) + ":" + str(mins) + ":" + str(sec)
-    return "{0:02}:{1:02}:{2:02}".format(int(hours),int(mins),int(sec))
