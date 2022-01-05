@@ -24,3 +24,6 @@ python study project pomodoro toolset
   - On GitHub, you can see the commit history of a repository by:
     - Navigating directly to the commits page of a repository (add `/commits/master` or `/commits/main` or `/commits` to repository url)
 
+### Buttons layout issue
+
+- https://stackoverflow.com/questions/70587595/layout-buttons-within-frame-nested-in-tkk-notebook

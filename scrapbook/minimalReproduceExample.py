@@ -15,7 +15,7 @@ mainTab     = ttk.Frame(tabs)
 mainTab.grid(columnspan=3, rowspan=6)
 
 buttonFrame = tk.Frame(mainTab, bg="white")
-buttonFrame.grid(column=0, row=4, columnspan=3, rowspan=1)
+buttonFrame.grid(column=0, row=4)
 start_btn = tk.Button(buttonFrame, text="Start", command=lambda:self.start_timer(), font="Arial", bg="green", fg="white") # , height=1, width=14
 start_btn.grid(column=0, row=0, columnspan=2)
 reset_btn = tk.Button(buttonFrame, text="X", command=lambda:self.reset_timer(), font="Arial", bg="green", fg="white") # , height=1, width=1

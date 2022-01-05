@@ -26,7 +26,7 @@ class MainTab:
         self.timeDisplay.grid(columnspan=3, column=0, row=3)
 
         buttonFrame = tk.Frame(mainTab, bg="white")
-        buttonFrame.grid(column=0, row=4, columnspan=3, rowspan=1)
+        buttonFrame.grid(column=0, row=4) # , columnspan=3, rowspan=1
         self.start_btn = tk.Button(buttonFrame, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white") # , height=1, width=14
         self.start_btn.grid(column=0, row=0, columnspan=2)
         self.reset_btn = tk.Button(buttonFrame, text="X", command=lambda:self.reset_timer(), font=BUTTON_FONT, bg="green", fg="white") # , height=1, width=1
