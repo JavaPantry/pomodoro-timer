@@ -25,10 +25,14 @@ class MainTab:
         self.timeDisplay = tk.Label(mainTab, text=convertSec(0), font=MAIN_DISPLAY_FONT)
         self.timeDisplay.grid(columnspan=3, column=0, row=3)
 
+        # buttonFrame = tk.Frame(mainTab, bg="white")
+        # buttonFrame.grid(column=0, row=4, columnspan=3, rowspan=1)
+
         self.start_btn = tk.Button(mainTab, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=14)
-        self.start_btn.grid(column=0, row=4)
+        self.start_btn.grid(columnspan=1, column=0, row=4)
+        
         self.reset_btn = tk.Button(mainTab, text="X", command=lambda:self.reset_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=1)
-        self.reset_btn.grid(column=0, row=4)
+        self.reset_btn.grid(columnspan=1, column=0, row=4)
 
         self.timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
         self.timerDisplay.grid(columnspan=2, column=1, row=4)

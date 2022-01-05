@@ -17,25 +17,24 @@ def configUpdated(evt):
 root = tk.Tk()
 root.title("Time Tracker")
 root.iconbitmap('./assets/logoTransp4icon24.ico')
-rootCanvas = tk.Canvas(root, width=600, height=300)
-rootCanvas.grid(columnspan=1, rowspan=2)
+rootFrame = tk.Frame(root, width=600, height=300)
+rootFrame.grid(columnspan=1, rowspan=2)
+rootFrame.pack(expand=1, fill="both")
 
-logo = Logo( rootCanvas)
+logo = Logo( rootFrame)
 
-tabs = ttk.Notebook(rootCanvas)
+tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
+
 mainTab     = ttk.Frame(tabs)
+mainTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(tabs)
+configTab.grid(columnspan=3, rowspan=6)
 
 tabs.add(mainTab, text="Main")
-mainCanvas = tk.Canvas(mainTab) # , width=600, height=300
-mainCanvas.grid(columnspan=3, rowspan=6)
-
 tabs.add(configTab, text="Config")
-configCanvas = tk.Canvas(configTab) # , width=600, height=300
-configCanvas.grid(columnspan=3, rowspan=6)
 
-rootCanvas.pack(expand=1, fill="both")
+rootFrame.pack(expand=1, fill="both")
 
 mainPane = MainTab(root,mainTab)
 configPane = ConfigTab(configTab)
