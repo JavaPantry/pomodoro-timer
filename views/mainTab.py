@@ -25,8 +25,10 @@ class MainTab:
         self.timeDisplay = tk.Label(mainTab, text=convertSec(0), font=MAIN_DISPLAY_FONT)
         self.timeDisplay.grid(columnspan=3, column=0, row=3)
 
-        self.start_btn = tk.Button(mainTab, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=15)
+        self.start_btn = tk.Button(mainTab, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=14)
         self.start_btn.grid(column=0, row=4)
+        self.reset_btn = tk.Button(mainTab, text="X", command=lambda:self.reset_timer(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=1)
+        self.reset_btn.grid(column=0, row=4)
 
         self.timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
         self.timerDisplay.grid(columnspan=2, column=1, row=4)
@@ -44,7 +46,6 @@ class MainTab:
         self.total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
 
     def updateTimeDisplay(self):
-        # global timerOn, appWorkingTimeTotal, appWorkingTimeStart, workingTimerTicks, workingTimerStart, workingTimerTotal, workingTimerTotalRuntime
         currentTimeTicks    = time.time()
         self.appWorkingTimeTotal = currentTimeTicks - self.appWorkingTimeStart
         workingTimerTicks   = currentTimeTicks - self.workingTimerStart
@@ -65,8 +66,6 @@ class MainTab:
         self.root.after(1000, self.updateTimeDisplay)
 
     def start_timer(self):
-        # global timerOn, workingTimerStart, workingTimerTotal, workingTimerTotalRuntime
-        
         # On STOP, reset the timer
         if(self.timerOn == True):
             self.timerOn = False
@@ -81,3 +80,15 @@ class MainTab:
             self.start_btn.config(text="Stop")
             self.start_btn.config(bg="red")
             self.workingTimerStart = time.time();
+
+    def reset_timer(self):
+        self.timerOn = False
+        self.start_btn.config(text="Start")
+        self.start_btn.config(bg="green")
+
+        self.workingTimerTotal      = 0
+        self.workingTimerStart      = 0
+        self.appWorkingTimeTotal    = 0
+        self.appWorkingTimeStart    = time.time()
+        self.timerDisplay.config(text=convertSec(0))
+        self.total_work_timerDisplay.config(text=convertSec(0))
