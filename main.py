@@ -5,7 +5,7 @@ from views.constants import *
 from views.configTab import *
 from views.mainTab import *
 from views.logo import *
-
+from views.gameScreen import *
 
 def configUpdated(evt):
     print("in main.py: config updated event received configData = ",configPane.configData["workPeriod"], configPane.configData["breakPeriod"])
@@ -21,7 +21,8 @@ rootFrame = tk.Frame(root, width=600, height=300)
 rootFrame.grid(columnspan=1, rowspan=2)
 rootFrame.pack(expand=1, fill="both")
 
-logo = Logo( rootFrame)
+logo = Logo(rootFrame)
+# logo = GameScreen(rootFrame)
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
