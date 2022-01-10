@@ -51,3 +51,4 @@ def drawClock(timeStr, canvas, x, y, r, color):
     seconds = getSeconds(timeStr)
     secondsAngle = seconds * 6
     canvas.create_line(x, y, x + (math.sin(math.radians(secondsAngle)) * r*0.90), y - (math.cos(math.radians(secondsAngle)) * r*0.90), width=3, fill="red", arrow=tk.LAST)
+    canvas.create_oval(x - 5, y - 5, x + 5, y + 5, fill="red")

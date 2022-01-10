@@ -31,8 +31,8 @@ class AnalogClock:
         secondsAngle = seconds * 6
         self.canvas.create_line(100, 100, 100 + (math.sin(math.radians(secondsAngle)) * 90), 100 - (math.cos(math.radians(secondsAngle)) * 90), width=3, fill="red", arrow=tk.LAST)
 
-        drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 50,  40, "lightgrey")
-        drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 180, 40, "lightgrey")
+        drawClock(time.strftime("%H:%M:%S"), self.canvas, 200, 50,  40, "lightblue")
+        drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 180, 30, "lightgreen")
 
         # call the update method again after 1 second
         self.canvas.after(1000, self.update)
