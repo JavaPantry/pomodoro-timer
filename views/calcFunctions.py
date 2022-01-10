@@ -43,7 +43,7 @@ def drawClock(timeStr, canvas, x, y, r, color, background=True):
     
     # draw the clock hands
     hours = getHours(timeStr)
-    hoursAngle = hours * 30
+    hoursAngle = hours * 30 # this produces the discrete angle in degrees i.e. for 9, 10, 11 but not for 9:30, 9:45, 9:59
     # draw the hour hand
     canvas.create_line(x, y, x + (math.sin(math.radians(hoursAngle)) * r*0.60), y - (math.cos(math.radians(hoursAngle)) * r*0.60), width=3, fill="black", arrow=tk.LAST)
     # draw the minute hand
