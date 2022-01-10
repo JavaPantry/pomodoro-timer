@@ -8,7 +8,7 @@ from .calcFunctions import *
 class AnalogClock:
 
     def __init__(self, rootCanvas):
-        self.canvas = tk.Canvas(rootCanvas, width=200, height=200)
+        self.canvas = tk.Canvas(rootCanvas, width=300, height=300)
         self.canvas.grid(column=0, row=0)
         self.canvas.create_oval(10, 10, 190, 190, fill="white")
         
@@ -30,7 +30,10 @@ class AnalogClock:
         seconds = getSeconds(time.strftime("%H:%M:%S"))
         secondsAngle = seconds * 6
         self.canvas.create_line(100, 100, 100 + (math.sin(math.radians(secondsAngle)) * 90), 100 - (math.cos(math.radians(secondsAngle)) * 90), width=3, fill="red", arrow=tk.LAST)
-        
+
+        drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 50,  40, "lightgrey")
+        drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 180, 40, "lightgrey")
+
         # call the update method again after 1 second
         self.canvas.after(1000, self.update)
 
