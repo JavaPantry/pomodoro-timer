@@ -4,6 +4,7 @@ import math
 from .constants import *
 from views.functions import resize_image
 from .calcFunctions import *
+from PIL import Image, ImageTk
 
 class AnalogClock:
 
@@ -12,6 +13,13 @@ class AnalogClock:
         self.canvas.grid(column=0, row=0)
         self.canvas.create_oval(10, 10, 190, 190, fill="white")
         
+        self.logo = Image.open('./assets/logoTransp.png')
+        self.logo = resize_image(self.logo, 150, 150)
+        self.logo = ImageTk.PhotoImage(self.logo)
+        # logo_label = tk.Label(rootCanvas, image=logo)
+        # logo_label.image = logo
+        # logo_label.grid(column=0, row=0)
+
         self.update()
 
     def update(self):
@@ -31,7 +39,9 @@ class AnalogClock:
         secondsAngle = seconds * 6
         self.canvas.create_line(100, 100, 100 + (math.sin(math.radians(secondsAngle)) * 90), 100 - (math.cos(math.radians(secondsAngle)) * 90), width=3, fill="red", arrow=tk.LAST)
 
-        drawClock(time.strftime("%H:%M:%S"), self.canvas, 200, 50,  40, "lightblue")
+
+        self.canvas.create_image(200, 50, image=self.logo)
+        drawClock(time.strftime("%H:%M:%S"), self.canvas, 200, 50,  40, "lightblue", False)
         drawClock(time.strftime("%H:%M:%S"), self.canvas, 180, 180, 30, "lightgreen")
 
         # call the update method again after 1 second

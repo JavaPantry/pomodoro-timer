@@ -36,8 +36,11 @@ def getHours(time):
     time = time.split(":")
     return int(time[0])
 
-def drawClock(timeStr, canvas, x, y, r, color):
-    canvas.create_oval(x - r, y - r, x + r, y + r, fill=color)
+def drawClock(timeStr, canvas, x, y, r, color, background=True):
+    if background:
+        canvas.create_oval(x - r, y - r, x + r, y + r, fill=color)
+    # canvas.create_oval(x - r, y - r, x + r, y + r, fill=color)
+    
     # draw the clock hands
     hours = getHours(timeStr)
     hoursAngle = hours * 30
