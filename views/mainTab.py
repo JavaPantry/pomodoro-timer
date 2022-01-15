@@ -22,9 +22,6 @@ class MainTab:
         self.actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font=LABEL_FONT_BOLD)
         self.actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
 
-        self.timeDisplay = tk.Label(mainTab, text=convertSec(0), font=MAIN_DISPLAY_FONT)
-        self.timeDisplay.grid(columnspan=3, column=0, row=3)
-
         buttonFrame = tk.Frame(mainTab, bg="white")
         buttonFrame.grid(column=0, row=4) # , columnspan=3, rowspan=1
         self.start_btn = tk.Button(buttonFrame, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white") # , height=1, width=14
@@ -57,7 +54,6 @@ class MainTab:
             # don't add ticks otherwise Actual time working will think that you are working
             self.workingTimerTotalRuntime   = self.workingTimerTotal 
 
-        self.timeDisplay.config(text=time.strftime("%H:%M:%S"))
         self.total_app_work_timerDisplay.config(text=convertSec(self.appWorkingTimeTotal))
         self.actualWorkPercentageDisplay.config(text="Actual work time: " + calcPercentage(self.appWorkingTimeTotal/1000., self.workingTimerTotalRuntime/1000.) + "%")
 

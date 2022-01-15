@@ -23,25 +23,22 @@ rootFrame = tk.Frame(root, width=600, height=300)
 rootFrame.grid(columnspan=1, rowspan=2)
 rootFrame.pack(expand=1, fill="both")
 
-# don't use: logo = GameScreen(rootFrame)
-# logo = Logo(rootFrame)
-# logo = AnalogClock(rootFrame)
 mainDisplay = DigitalClock(rootFrame)
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
 
-mainTab     = ttk.Frame(tabs)
-mainTab.grid(columnspan=3, rowspan=6)
+pomodoroTab     = ttk.Frame(tabs)
+pomodoroTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(tabs)
 configTab.grid(columnspan=3, rowspan=6)
 
-tabs.add(mainTab, text="Main")
+tabs.add(pomodoroTab, text="Main")
 tabs.add(configTab, text="Config")
 
 rootFrame.pack(expand=1, fill="both")
 
-mainPane = MainTab(root,mainTab)
+mainPane = MainTab(root,pomodoroTab)
 configPane = ConfigTab(configTab)
 
 mainPane.updateTimeDisplay()
