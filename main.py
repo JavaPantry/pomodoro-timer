@@ -24,7 +24,7 @@ rootFrame.pack(expand=1, fill="both")
 
 # don't use: logo = GameScreen(rootFrame)
 # logo = Logo(rootFrame)
-logo = AnalogClock(rootFrame)
+# logo = AnalogClock(rootFrame)
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
