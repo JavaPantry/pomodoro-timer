@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from views.analogClock import AnalogClock
+from views.digitalClock import DigitalClock
 from views.calcFunctions import *
 from views.constants import *
 from views.configTab import *
@@ -25,6 +26,7 @@ rootFrame.pack(expand=1, fill="both")
 # don't use: logo = GameScreen(rootFrame)
 # logo = Logo(rootFrame)
 # logo = AnalogClock(rootFrame)
+mainDisplay = DigitalClock(rootFrame)
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
