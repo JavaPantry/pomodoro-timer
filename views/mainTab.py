@@ -19,7 +19,7 @@ class MainTab:
 
     def __init__(self, root, mainTab) -> None:
         self.root = root
-        self.actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font=LABEL_FONT_BOLD)
+        self.actualWorkPercentageDisplay = tk.Label(mainTab, text="Not fool around time 0.0%", font=LABEL_FONT_BOLD)
         self.actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
 
         self.timeDisplay = tk.Label(mainTab, text=convertSec(0), font=MAIN_DISPLAY_FONT)
@@ -59,7 +59,7 @@ class MainTab:
 
         self.timeDisplay.config(text=time.strftime("%H:%M:%S"))
         self.total_app_work_timerDisplay.config(text=convertSec(self.appWorkingTimeTotal))
-        self.actualWorkPercentageDisplay.config(text="Actual work time: " + calcPercentage(self.appWorkingTimeTotal/1000., self.workingTimerTotalRuntime/1000.) + "%")
+        self.actualWorkPercentageDisplay.config(text="Not fool around time: " + calcPercentage(self.appWorkingTimeTotal/1000., self.workingTimerTotalRuntime/1000.) + "%")
 
         if(self.timerOn == True):
             self.timerDisplay.config(text=convertSec(workingTimerTicks))
