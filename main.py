@@ -23,7 +23,7 @@ rootFrame = tk.Frame(root, width=600, height=300)
 rootFrame.grid(columnspan=1, rowspan=2)
 rootFrame.pack(expand=1, fill="both")
 
-mainDisplay = DigitalClock(rootFrame)
+digitalClockDisplay = DigitalClock(rootFrame)
 
 notebook = ttk.Notebook(rootFrame)
 notebook.grid(column=0, row=1, columnspan=1, rowspan=1)
