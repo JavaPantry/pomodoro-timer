@@ -3,7 +3,7 @@ import time
 from .constants import *
 from .calcFunctions import *
 
-class MainTab:
+class PomodoroView:
 
     configData = {'workPeriod': 25,'breakPeriod': 5}
 
