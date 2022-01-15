@@ -16,7 +16,7 @@ def configUpdated(evt):
 # *************************************************************
 
 root = tk.Tk()
-root.title("Time Tracker")
+root.title("Time Tracker (dead branch commit)")
 root.iconbitmap('./assets/logoTransp4icon24.ico')
 rootFrame = tk.Frame(root, width=600, height=300)
 rootFrame.grid(columnspan=1, rowspan=2)
@@ -26,6 +26,11 @@ rootFrame.pack(expand=1, fill="both")
 # logo = Logo(rootFrame)
 # logo = AnalogClock(rootFrame)
 # will put DigitalClock in the logo area and then pull/remove mainDisplay from (mainTab)pomodoro tab (in separated-digitalClock-panel branch)
+
+# ****************************************************************
+# ********  This will be dead branch with logo area           ****
+# ********  made after switch to digital clock in logo arrea  ****
+# ****************************************************************
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
