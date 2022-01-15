@@ -33,8 +33,8 @@ pomodoroTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(tabs)
 configTab.grid(columnspan=3, rowspan=6)
 
-tabs.add(pomodoroTab, text="Main")
-tabs.add(configTab, text="Config")
+tabs.add(pomodoroTab, text="Pomodoro")
+tabs.add(configTab, text="Pomodoro Config")
 
 rootFrame.pack(expand=1, fill="both")
 
