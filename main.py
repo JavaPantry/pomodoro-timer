@@ -26,6 +26,7 @@ rootFrame.pack(expand=1, fill="both")
 # logo = Logo(rootFrame)
 # logo = AnalogClock(rootFrame)
 # will put DigitalClock in the logo area and then pull/remove mainDisplay from (mainTab)pomodoro tab (in separated-digitalClock-panel branch)
+# will be merged with separated-digitalClock-panel branch when dev in that branch is done
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
