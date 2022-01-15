@@ -25,16 +25,16 @@ rootFrame.pack(expand=1, fill="both")
 
 mainDisplay = DigitalClock(rootFrame)
 
-tabs = ttk.Notebook(rootFrame)
-tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
+notebook = ttk.Notebook(rootFrame)
+notebook.grid(column=0, row=1, columnspan=1, rowspan=1)
 
-pomodoroTab     = ttk.Frame(tabs)
+pomodoroTab     = ttk.Frame(notebook)
 pomodoroTab.grid(columnspan=3, rowspan=6)
-configTab   = ttk.Frame(tabs)
+configTab   = ttk.Frame(notebook)
 configTab.grid(columnspan=3, rowspan=6)
 
-tabs.add(pomodoroTab, text="Pomodoro")
-tabs.add(configTab, text="Pomodoro Config")
+notebook.add(pomodoroTab, text="Pomodoro")
+notebook.add(configTab, text="Pomodoro Config")
 
 rootFrame.pack(expand=1, fill="both")
 
