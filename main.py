@@ -5,7 +5,7 @@ from views.digitalClock import DigitalClock
 from views.calcFunctions import *
 from views.constants import *
 from views.configTab import *
-from views.mainTab import *
+from views.PomodoroView import *
 from views.logo import *
 from views.gameScreen import *
 
