@@ -38,10 +38,10 @@ notebook.add(configTab, text="Pomodoro Config")
 
 rootFrame.pack(expand=1, fill="both")
 
-mainPane = PomodoroView(root,pomodoroTab)
+pomodoroView = PomodoroView(root,pomodoroTab)
 configPane = ConfigTab(configTab)
 
-mainPane.updateTimeDisplay()
+pomodoroView.updateTimeDisplay()
 
 root.bind("<<ConfigUpdated>>", configUpdated)
 root.mainloop()
