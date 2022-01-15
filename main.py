@@ -41,7 +41,5 @@ rootFrame.pack(expand=1, fill="both")
 pomodoroView = PomodoroView(root,pomodoroTab)
 configPane = ConfigTab(configTab)
 
-pomodoroView.updateTimeDisplay()
-
 root.bind("<<ConfigUpdated>>", configUpdated)
 root.mainloop()

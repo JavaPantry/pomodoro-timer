@@ -43,8 +43,9 @@ class PomodoroView:
 
         self.total_app_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
         self.total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
+        self.update()
 
-    def updateTimeDisplay(self):
+    def update(self):
         currentTimeTicks    = time.time()
         self.appWorkingTimeTotal = currentTimeTicks - self.appWorkingTimeStart
         workingTimerTicks   = currentTimeTicks - self.workingTimerStart
@@ -61,7 +62,7 @@ class PomodoroView:
             self.timerDisplay.config(text=convertSec(workingTimerTicks))
             self.total_work_timerDisplay.config(text=convertSec(self.workingTimerTotalRuntime))
 
-        self.root.after(1000, self.updateTimeDisplay)
+        self.root.after(1000, self.update)
 
     def start_timer(self):
         # On STOP, reset the timer
