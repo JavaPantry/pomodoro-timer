@@ -25,10 +25,12 @@ rootFrame.pack(expand=1, fill="both")
 # don't use: logo = GameScreen(rootFrame)
 # logo = Logo(rootFrame)
 # logo = AnalogClock(rootFrame)
+# will put DigitalClock in the logo area and then pull/remove mainDisplay from (mainTab)pomodoro tab (in separated-digitalClock-panel branch)
 
 tabs = ttk.Notebook(rootFrame)
 tabs.grid(column=0, row=1, columnspan=1, rowspan=1)
 
+# rename mainTab into pomodoroTab (in separated-digitalClock-panel branch)
 mainTab     = ttk.Frame(tabs)
 mainTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(tabs)
