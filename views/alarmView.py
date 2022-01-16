@@ -5,6 +5,11 @@ import winsound
 import os
 from .constants import *
 
+# ***********************************************************************
+# ********                Alarm Clock                                  **
+# **        Create an Alarm Clock using Tkinter - Using threads        **
+# ** https://www.geeksforgeeks.org/creat-an-alarm-clock-using-tkinter/ **
+# ***********************************************************************
 
 class AlarmView:
 
@@ -16,18 +21,48 @@ class AlarmView:
 
     def __init__(self, root) -> None:
         self.root = root
-        self.dummyConfigLabel1 = tk.Label(root, text="Alarm Hours", font=LABEL_FONT)
-        self.dummyConfigLabel1.grid(columnspan=2, column=0, row=0)
-        self.alarmHour = tk.Entry(root, width=10) # , font=DISPLAY_FONT , font=ENTRY_FONT
-        self.alarmHour.grid(column=2, row=0)
 
-        self.dummyConfigLabel2 = tk.Label(root, text="Alarm minutes", font=LABEL_FONT)
-        self.dummyConfigLabel2.grid(columnspan=2, column=0, row=1)
-        self.alarmMinute = tk.Entry(root, width=10) # , font=DISPLAY_FONT , font=ENTRY_FONT
-        self.alarmMinute.grid(column=2, row=1)
+        hoursLabel = tk.Label(root, text="Hours", font=LABEL_FONT)
+        hoursLabel.grid(column=0, row=0)
+        minutesLabel = tk.Label(root, text="Minutes", font=LABEL_FONT)
+        minutesLabel.grid(column=1, row=0)
 
-        self.setAlarmBtn = tk.Button(root, text="Set Alarm", command=lambda:self.setAlarm(), font=BUTTON_FONT, bg="green", fg="white", height=1, width=15)
-        self.setAlarmBtn.grid(column=0, row=4)
+        self.alarmHour = tk.Entry(root)#, width=10
+        self.alarmHour.grid(column=0, row=1)
+        self.alarmMinute = tk.Entry(root)#, width=10
+        self.alarmMinute.grid(column=1, row=1)
+        self.setAlarmBtn = tk.Button(root, text="Add Alarm", command=lambda:self.addScheduledAlarm(), font=BUTTON_FONT, bg="green", fg="white")#, height=1, width=15
+        self.setAlarmBtn.grid(column=2, row=1)
+
+        ## add scrollable listbox for alarm history
+        self.alarmSchedule = tk.Listbox(root, width=15, height=5)
+        self.alarmSchedule.grid(column=0, row=2, columnspan=3)
+
+    def addScheduledAlarm(self):
+        if self.alarmHour.get() == '' or self.alarmMinute.get() == '':
+            # get last item from listbox
+            last_item = self.alarmSchedule.get(self.alarmSchedule.size()-1)
+
+            if last_item == '':
+                now = datetime.datetime.now()
+                hour = now.hour
+                minute = now.minute+1
+                alarm_time = str(hour) + ":" + str(minute)
+            else:
+                # get minute from last item
+                last_item_split = last_item.split(":")
+                hour = int(last_item_split[0])
+                minute = int(last_item_split[1])
+                minute += 1
+                alarm_time = str(hour) + ":" + str(minute)
+        else:
+            alarm_time = self.alarmHour.get() + ":" + self.alarmMinute.get()
+
+        self.alarmSchedule.insert(tk.END, alarm_time)
+
+        # hour = int(self.alarmHour.get())
+        # minute = int(self.alarmMinute.get())
+        # self.alarmSchedule.insert(tk.END, f"{hour}:{minute}")
 
 
     def setAlarm(self):
