@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from views.analogClock import AnalogClock
+from views.alarmView import AlarmView
 from views.digitalClock import DigitalClock
 from views.calcFunctions import *
 from views.constants import *
@@ -28,17 +28,23 @@ digitalClockDisplay = DigitalClock(rootFrame)
 notebook = ttk.Notebook(rootFrame)
 notebook.grid(column=0, row=1, columnspan=1, rowspan=1)
 
+alarmTab = ttk.Frame(notebook)
+alarmTab.grid(columnspan=3, rowspan=6)
 pomodoroTab     = ttk.Frame(notebook)
 pomodoroTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(notebook)
 configTab.grid(columnspan=3, rowspan=6)
 
+
+notebook.add(alarmTab, text="Alarm Clock")
 notebook.add(pomodoroTab, text="Pomodoro")
 notebook.add(configTab, text="Pomodoro Config")
 
 rootFrame.pack(expand=1, fill="both")
 
-pomodoroView = PomodoroView(pomodoroTab) # root,
+# alarmTab
+alarmView = AlarmView(alarmTab)
+pomodoroView = PomodoroView(pomodoroTab)
 configPane = ConfigTab(configTab)
 
 root.bind("<<ConfigUpdated>>", configUpdated)
