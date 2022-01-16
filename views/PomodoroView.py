@@ -17,31 +17,31 @@ class PomodoroView:
     workingTimerTotal           = 0
     workingTimerTotalRuntime    = 0
 
-    def __init__(self, root, mainTab) -> None:
+    def __init__(self, root) -> None:
         self.root = root
-        self.actualWorkPercentageDisplay = tk.Label(mainTab, text="Actual work 0.0%", font=LABEL_FONT_BOLD)
+        self.actualWorkPercentageDisplay = tk.Label(self.root, text="Actual work 0.0%", font=LABEL_FONT_BOLD)
         self.actualWorkPercentageDisplay.grid(columnspan=3, column=0, row=1)
 
-        buttonFrame = tk.Frame(mainTab, bg="white")
+        buttonFrame = tk.Frame(self.root, bg="white")
         buttonFrame.grid(column=0, row=4) # , columnspan=3, rowspan=1
         self.start_btn = tk.Button(buttonFrame, text="Start", command=lambda:self.start_timer(), font=BUTTON_FONT, bg="green", fg="white") # , height=1, width=14
         self.start_btn.grid(column=0, row=0, columnspan=2)
         self.reset_btn = tk.Button(buttonFrame, text="X", command=lambda:self.reset_timer(), font=BUTTON_FONT, bg="green", fg="white") # , height=1, width=1
         self.reset_btn.grid(column=2, row=0)
 
-        self.timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
+        self.timerDisplay = tk.Label(self.root, text=convertSec(0), font=DISPLAY_FONT)
         self.timerDisplay.grid(columnspan=2, column=1, row=4)
 
-        self.total_work_timer_label = tk.Label(mainTab, text="Total work time", font=LABEL_FONT)
+        self.total_work_timer_label = tk.Label(self.root, text="Total work time", font=LABEL_FONT)
         self.total_work_timer_label.grid(column=0, row=5)
 
-        self.total_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
+        self.total_work_timerDisplay = tk.Label(self.root, text=convertSec(0), font=DISPLAY_FONT)
         self.total_work_timerDisplay.grid(columnspan=2, column=1, row=5)
 
-        self.total_app_work_timer_label = tk.Label(mainTab, text="Total app worktime", font=LABEL_FONT)
+        self.total_app_work_timer_label = tk.Label(self.root, text="Total app worktime", font=LABEL_FONT)
         self.total_app_work_timer_label.grid(column=0, row=6)
 
-        self.total_app_work_timerDisplay = tk.Label(mainTab, text=convertSec(0), font=DISPLAY_FONT)
+        self.total_app_work_timerDisplay = tk.Label(self.root, text=convertSec(0), font=DISPLAY_FONT)
         self.total_app_work_timerDisplay.grid(columnspan=2, column=1, row=6)
         self.update()
 

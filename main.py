@@ -38,7 +38,7 @@ notebook.add(configTab, text="Pomodoro Config")
 
 rootFrame.pack(expand=1, fill="both")
 
-pomodoroView = PomodoroView(root,pomodoroTab)
+pomodoroView = PomodoroView(pomodoroTab) # root,
 configPane = ConfigTab(configTab)
 
 root.bind("<<ConfigUpdated>>", configUpdated)
