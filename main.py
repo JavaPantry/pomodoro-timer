@@ -19,22 +19,18 @@ def configUpdated(evt):
 root = tk.Tk()
 root.title("Time Tracker")
 root.iconbitmap('./assets/logoTransp4icon24.ico')
-rootFrame = tk.Frame(root, width=600, height=300)
+rootFrame = tk.Frame(root)
 rootFrame.grid(columnspan=1, rowspan=2)
 rootFrame.pack(expand=1, fill="both")
 
 digitalClockDisplay = DigitalClock(rootFrame)
 
 notebook = ttk.Notebook(rootFrame)
-notebook.grid(column=0, row=1, columnspan=1, rowspan=1)
+notebook.grid(column=0, row=1) # , columnspan=1, rowspan=1
 
 alarmTab = ttk.Frame(notebook)
-alarmTab.grid(columnspan=3, rowspan=6)
 pomodoroTab     = ttk.Frame(notebook)
-pomodoroTab.grid(columnspan=3, rowspan=6)
 configTab   = ttk.Frame(notebook)
-configTab.grid(columnspan=3, rowspan=6)
-
 
 notebook.add(alarmTab, text="Alarm Clock")
 notebook.add(pomodoroTab, text="Pomodoro")
